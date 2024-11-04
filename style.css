@@ -92,6 +92,11 @@ body {
   z-index: 5;
 }
 
+.sidebar.collapsed {
+  display: none;
+  transition: width 0.3s ease;
+}
+
 .sidebar-title {
   font-family: var(--ff-OpenSans);
   text-transform: uppercase;
@@ -228,6 +233,7 @@ button.tag.active {
   background: transparent;
   border: 1px solid var(--light-black);
   color: var(--inactive-black);
+  cursor: pointer;
 }
 
 .keyword-section p {

@@ -1,11 +1,12 @@
 const Profile = {
-  props: ["componentInHome", "componentInDetailedProject"],
-  data() {
-    return {};
+  props: ["componentInHome", "componentInDetailedProject", "collapsedState"],
+  methods: {
+    closeSidebar() {
+      this.$emit("closeSidebar");
+    },
   },
-  methods: {},
   template: `
-  <aside class="sidebar left-sidebar" :class="{'component-in-home': componentInHome, 'component-in-detailed-project': componentInDetailedProject}" id="left-sidebar">
+  <aside class="sidebar left-sidebar" :class="{'component-in-home': componentInHome, 'component-in-detailed-project': componentInDetailedProject, 'collapsed': collapsedState}" id="left-sidebar">
           <div class="sidebar-header">
             <h1 class="logo sidebar-title">
               <span class="material-symbols-outlined"> bubble_chart </span>
@@ -14,7 +15,7 @@ const Profile = {
             <button
               class="btn circle-btn toggle-btn"
               :class="{'component-in-home': componentInHome, 'component-in-detailed-project': componentInDetailedProject}"
-              id="close-left-sidebar-btn"
+              id="close-left-sidebar-btn" @click="closeSidebar"
             >
               <span class="material-symbols-outlined"> arrow_back </span>
             </button>

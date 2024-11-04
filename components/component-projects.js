@@ -1,5 +1,5 @@
 const Projects = {
-  props: ["componentInHome", "componentInDetailedProject"],
+  props: ["componentInHome", "componentInDetailedProject", "collapsedState"],
   data() {
     return {
       projects: projects,
@@ -67,13 +67,16 @@ const Projects = {
         this.$emit("project-selected", project);
       }
     },
+    closeSidebar() {
+      this.$emit("closeSidebar");
+    },
   },
   template: `
-  <aside class="sidebar right-sidebar" id="right-sidebar" :class="{'component-in-home': componentInHome, 'component-in-detailed-project': componentInDetailedProject}">
+  <aside class="sidebar right-sidebar" id="right-sidebar" :class="{'component-in-home': componentInHome, 'component-in-detailed-project': componentInDetailedProject, 'collapsed': collapsedState}">
           <div class="sidebar-header">
             <button
               class="btn circle-btn toggle-btn" :class="{'component-in-home': componentInHome, 'component-in-detailed-project': componentInDetailedProject}"
-              id="close-right-sidebar-btn"
+              id="close-right-sidebar-btn" @click="closeSidebar"
             >
               <span class="material-symbols-outlined"> arrow_forward </span>
             </button>
